@@ -1,6 +1,10 @@
 ## Light-ExpansionNet: Enhancing Cost-Efficient Image Captioning through ExpansionNet v2 Optimization 
 
-The light-weight oriented improvement for [ExpansionNet v2](https://arxiv.org/abs/2208.06551) in MSCOCO image captioning task.
+The light-weight oriented improvement for [ExpansionNet v2](https://arxiv.org/abs/2208.06551) in MSCOCO image captioning task with the three improvement:
+
+1) Using Swin-TranformerV2-Base as image visual features extractor backbone.
+2) Memory-Augmented Attention implemented in the old Multi-Head Attention
+3) The adjustment in Static and Dynamic Expansion structure with the new Multiplicative Residual Embedding layer, the number of encoder and decoder layer are also dropped.
 
 ## Training Scripts:
 
@@ -60,7 +64,7 @@ python train.py --N_enc 2 --N_dec 2  \
     --warmup 1 --lr 3e-5 --anneal_coeff 0.55 --anneal_every_epoch 1 --enc_drop 0.3 \
     --dec_drop 0.3 --enc_input_drop 0.3 --dec_input_drop 0.3 --drop_other 0.3  \
     --batch_size 8 --num_accum 3 --num_gpus 1 --ddp_sync_port 11317 --eval_beam_sizes [3]  \
-    --save_path ./github_ignore_material/saves/ --save_every_minutes 60 --how_many_checkpoints 1  \
+    --save_path ./save_checkpoint_path/ --save_every_minutes 60 --how_many_checkpoints 1  \
     --is_end_to_end True --images_path ./path_to_dataset_folder/ --partial_load True \
     --backbone_save_path ./path_to_backbone/swinv2_base_patch4_window12to24_192to384_22kto1k_ft.pth \
     --body_save_path ./save_checkpoint_path/phase2_checkpoint \
