@@ -171,6 +171,8 @@ Results on the Karpathy test split:
 
 Captioning result:
 
-<p align="center">
-  <embed src="result.pdf" width="700"/>
-</p>
+<object data=result.pdf" type="application/pdf" width="700px" >
+    <embed src="result.pdf">
+        <p>This browser does not support PDFs.</p>
+    </embed>
+</object>
