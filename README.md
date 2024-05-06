@@ -16,6 +16,7 @@ The light-weight oriented improvement for [ExpansionNet v2](https://arxiv.org/ab
 * pytorch 1.9.0
 * h5py
 
+The training progress is done on the two model: Light-ExpansionNet and the baseline - ExpansionNet v2, you need to choose the model to train in the `train.py` and `test.py` files. For Light-ExpansionNet, `N_enc` and `N_dec` are `2`, that for ExpansionNet v2 is `3`. 
 The provided code is for running on Linux OS. In case of using Windows OS, it need to be modified as PyTorch Distributed Data Parallel won't work on Windows. 
 
 #### Dataset preparation:
