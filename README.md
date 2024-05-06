@@ -17,7 +17,9 @@ The provided code is for running on Linux OS. In case of using Windows OS, it ne
 #### Dataset preparation:
 
 MSCOCO 2014 dataset: [here](https://cocodataset.org/#home)
+
 The respective captions of [Jia Cheng Hu](https://github.com/jchenghu): [drive](https://drive.google.com/drive/folders/1bBMH4-Fw1LcQZmSzkMCqpEl0piIP88Y3?usp=sharing)
+
 Swin-Transformer backbone: [github](https://github.com/microsoft/Swin-Transformer/blob/main/MODELHUB.md)
 
 #### 1. Cross Entropy Training: Features generation
