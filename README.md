@@ -171,4 +171,4 @@ Results on the Karpathy test split:
 
 Captioning result:
 
-<object data=result.pdf" type="application/pdf" width="700px" > <\object>
+<object data=./result.pdf" type="application/pdf" width="700px" > <\object>
