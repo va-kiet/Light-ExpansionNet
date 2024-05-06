@@ -165,6 +165,7 @@ Results on the Karpathy test split:
     <td>60.19</td>
     <td>138.78</td>
     <td>23.97</td>
+    <td>120M</td>
   </tr>
 </table>
 
