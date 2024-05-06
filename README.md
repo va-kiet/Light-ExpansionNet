@@ -3,7 +3,7 @@
 The light-weight oriented improvement for [ExpansionNet v2](https://arxiv.org/abs/2208.06551) in MSCOCO image captioning task with the three improvement:
 
 1) Using Swin-TranformerV2-Base as image visual features extractor backbone.
-2) Memory-Augmented Attention implemented in the old Multi-Head Attention
+2) Memory-Augmented Attention implemented in the old Multi-Head Attention.
 3) The adjustment in Static and Dynamic Expansion structure with the new Multiplicative Residual Embedding layer, the number of encoder and decoder layer are also dropped.
 
 ## Training Scripts:
@@ -26,7 +26,7 @@ The respective captions of [Jia Cheng Hu](https://github.com/jchenghu): [drive](
 
 Swin-Transformer backbone: [github](https://github.com/microsoft/Swin-Transformer/blob/main/MODELHUB.md)
 
-#### 1. Cross Entropy Training: Features generation
+#### 1. Cross Entropy Training: Features generation:
 
 First we generate the features for the first training step:
 ```
@@ -39,7 +39,7 @@ python data_generator.py \
 ```
 The ouput file "features.hdf5"'s size is pretty big (67.7GB), be careful of your hardware capacity.
 
-#### 2. Cross-Entropy Training: Partial Training
+#### 2. Cross-Entropy Training: Partial Training:
 
 In this step the model is trained using the Cross Entropy loss and the features generated
 in the previous step:
@@ -54,7 +54,7 @@ python train.py --N_enc 2 --N_dec 2  \
     --print_every_iter 11807 --eval_every_iter 999999 \
     --reinforce False --num_epochs 8
 ```
-#### 3. Cross-Entropy Training: End to End Training
+#### 3. Cross-Entropy Training: End to End Training:
 
 The following command will train the entire network in the end to end mode. However, one argument need to be changed according to the previous result, the checkpoint name file with the prefix `checkpoint_ ... _xe.pth`, which may be overwritten if be kept the same name, we will refer it as `phase2_checkpoint` below and in
 the later step:
@@ -71,7 +71,7 @@ python train.py --N_enc 2 --N_dec 2  \
     --print_every_iter 15000 --eval_every_iter 999999 \
     --reinforce False --num_epochs 2
 ```
-#### 4. CIDEr optimization: Features generation
+#### 4. CIDEr optimization: Features generation:
 
 This step generates the features for the reinforcement step:
 ```
@@ -82,7 +82,7 @@ python data_generator.py \
     --captions_path ./path_to_dataset_folder/
 ```
 
-#### 5. CIDEr optimization: Partial Training
+#### 5. CIDEr optimization: Partial Training:
 
 The following command performs the partial training using the self-critical learning:
 ```
@@ -99,7 +99,7 @@ python train.py --N_enc 2 --N_dec 2  \
     --reinforce True --num_epochs 9
 ```
 
-#### 6. CIDEr optimization: End to End Training
+#### 6. CIDEr optimization: End to End Training:
 
 This last step again train the model in an end to end fashion, however it is optional since it only slightly improves the performances:
 ```
@@ -116,10 +116,55 @@ python train.py --N_enc 2 --N_dec 2  \
     --reinforce True --num_epochs 1
 ```
 
-## Evaluation
+## Evaluation:
 
 ```
 python test.py --N_enc 2 --N_dec 2 --model_dim 512 \
     --num_gpus 1 --eval_beam_sizes [5] --is_end_to_end True \
     --save_model_path ./save_checkpoint_path/phase6_checkpoint
 ```
+## Demo:
+
+You can test the model on generic images by using the script:
+``` 
+python demo.py \
+     	--load_path path_to_checkpoint/___.pth \
+     	--image_paths your_image_path/image_1 your_image_path/image_2 ...
+```
+
+## Result:
+
+Results on the Karpathy test split:
+ <table>
+  <tr>
+    <th>Model</th>
+    <th>B@1</th>
+    <th>B@4</th>
+    <th>Meteor</th>
+    <th>Rouge-L</th>
+    <th>CIDEr-D</th>
+    <th>Spice</th>
+    <th>params</th>
+    
+  </tr>
+  <tr>
+    <td>ExpansionNet v2</td>
+    <td>82.63</td>
+    <td>40.53</td>
+    <td>29.92</td>
+    <td>60.20</td>
+    <td>138.60</td>
+    <td>24.07</td>
+    <td>233M</td>  
+  </tr>
+  <tr>
+    <td>Light-ExpansionNet</td>
+    <td>82.67</td>
+    <td>40.93</td>
+    <td>29.90</td>
+    <td>60.19</td>
+    <td>138.78</td>
+    <td>23.97</td>
+  </tr>
+</table>
+
