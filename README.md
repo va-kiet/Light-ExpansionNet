@@ -169,3 +169,8 @@ Results on the Karpathy test split:
   </tr>
 </table>
 
+Captioning result:
+
+<p align="center">
+  <img src="./result.pdf" width="700"/>
+</p>
