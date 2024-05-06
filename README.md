@@ -32,7 +32,7 @@ python data_generator.py \
     --output_path ./path_to_features_file/features.hdf5 \
     --images_path ./path_to_dataset_folder/ \
     --captions_path ./path_to_dataset_folder/
-
+```
 The ouput file "features.hdf5"'s size is pretty big (67.7GB), be careful of your hardware capacity.
 
 #### 2. Cross-Entropy Training: Partial Training
@@ -49,7 +49,7 @@ python train.py --N_enc 2 --N_dec 2  \
     --is_end_to_end False --features_path ./path_to_features_file/features.hdf5 --partial_load False \
     --print_every_iter 11807 --eval_every_iter 999999 \
     --reinforce False --num_epochs 8
-
+```
 #### 3. Cross-Entropy Training: End to End Training
 
 The following command will train the entire network in the end to end mode. However, one argument need to be changed according to the previous result, the checkpoint name file with the prefix `checkpoint_ ... _xe.pth`, which may be overwritten if be kept the same name, we will refer it as `phase2_checkpoint` below and in
@@ -66,7 +66,7 @@ python train.py --N_enc 2 --N_dec 2  \
     --body_save_path ./save_checkpoint_path/phase2_checkpoint \
     --print_every_iter 15000 --eval_every_iter 999999 \
     --reinforce False --num_epochs 2
-
+```
 #### 4. CIDEr optimization: Features generation
 
 This step generates the features for the reinforcement step:
@@ -119,4 +119,3 @@ python test.py --N_enc 2 --N_dec 2 --model_dim 512 \
     --num_gpus 1 --eval_beam_sizes [5] --is_end_to_end True \
     --save_model_path ./save_checkpoint_path/phase6_checkpoint
 ```
-The op
