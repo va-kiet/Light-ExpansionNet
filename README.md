@@ -171,4 +171,4 @@ Results on the Karpathy test split:
 
 Captioning result:
 
-<embed src =./result.pdf" type="application/pdf" width="700px"> 
+<p><embed src =./result.pdf" type="application/pdf" width="700px"><\p> 
