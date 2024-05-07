@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from models.layers_v6 import EmbeddingLayer, DecoderLayer, EncoderLayer
+from models.layers_le import EmbeddingLayer, DecoderLayer, EncoderLayer
 from utils.masking import create_pad_mask, create_no_peak_and_pad_mask
 from models.captioning_model import CaptioningModel
 from models.swin_transformer_v2 import SwinTransformerV2 as SwinTransformer
