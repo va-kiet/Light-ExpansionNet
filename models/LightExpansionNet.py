@@ -1,5 +1,5 @@
 import torch
-from models.layers_v6 import EmbeddingLayer, EncoderLayer, DecoderLayer
+from models.layers_le import EmbeddingLayer, EncoderLayer, DecoderLayer
 from utils.masking import create_pad_mask, create_no_peak_and_pad_mask
 from models.captioning_model import CaptioningModel
 
