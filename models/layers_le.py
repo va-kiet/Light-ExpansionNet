@@ -292,19 +292,6 @@ class FeedForward(nn.Module):
         x = self.linear_2(x)
         return x
 
-class PositionWiseFeedForward(nn.Module):
-    def __init__(self, d_model, d_ff, dropout_perc):
-        super(PositionWiseFeedForward, self).__init__()
-        self.linear_1 = nn.Linear(d_model, d_ff)
-        self.dropout_1 = nn.Dropout(dropout_perc)
-        self.linear_2 = nn.Linear(d_ff, d_model)
-        self.dropout_2 = nn.Dropout(dropout_perc)
-
-
-    def forward(self, x):
-        x2 = self.dropout_1(F.relu(self.linear_1(x)))
-        x2 = self.dropout_1(F.relu(self.linear_2(x2)))
-        return x + x2
 
 class ScaledDotProductAttention(nn.Module):
     '''
